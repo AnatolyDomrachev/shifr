@@ -18,6 +18,7 @@ int main()
     int shifr;
     ifstream fin;
     ofstream fout;
+    char ch;
     
     cout << "Имя файла, который нужно обработать: ";
     cin >> infile;
@@ -37,9 +38,15 @@ int main()
         return 2;
     }
     
+    while(true)
+    {
+        fin.get(ch);
+        if(fin.eof()) break;
+        fout.put(ch);
+    }
     
     fin.close();
-    out.close();
+    fout.close();
     return 0;
 }
 
