@@ -1,11 +1,3 @@
-/******************************************************************************
-
-                              Online C++ Compiler.
-               Code, Compile, Run and Debug C++ program online.
-Write your code in this editor and press "Run" button to compile and execute it.
-
-*******************************************************************************/
-
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -18,6 +10,7 @@ int main()
     int shifr;
     ifstream fin;
     ofstream fout;
+    int type;
     char ch;
     
     cout << "Имя файла, который нужно обработать: ";
@@ -38,10 +31,24 @@ int main()
         return 2;
     }
     
+    cout << "Тип операции: \n 1 - кодировать \n 2 - раскодировать \n ";
+    cin >> type;
+
+    if(type != 1 && type != 2)
+    {
+	    cout << "Неверный тип операции";
+	    return 3;
+    }
+
+    cout << "Шифр: ";
+    cin >> shifr;
+
     while(true)
     {
         fin.get(ch);
         if(fin.eof()) break;
+	if(type == 1) ch += shifr;
+	if(type == 2) ch -= shifr;
         fout.put(ch);
     }
     
